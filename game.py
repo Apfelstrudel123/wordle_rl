@@ -10,7 +10,7 @@ class Color(Enum):
     GREEN = 2
 
 class Game:
-    def __init__(self, data, verbose=True):
+    def __init__(self, data: list[str], verbose:bool=True):
         self.verbose = verbose
         self.words = data
         self.solution = sample_word(data)
@@ -22,7 +22,7 @@ class Game:
     def get_remaining_attempts(self):
         return MAX_ATTEMPTS - self.attempts
 
-    def eval_word(self, word):
+    def eval_word(self, word: str) -> tuple[bool, list[Color]]:
         if len(word) != self.word_len:
             print("Error: Word length mismatch:", word)
             return False, []
